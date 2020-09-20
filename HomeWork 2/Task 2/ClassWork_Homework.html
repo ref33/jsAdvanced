@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="one">one</div>
+
+    <script>
+    // Добавьте после дива с id=one еще один див с текстом two и id=two
+    // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second 
+
+    var divOne = document.getElementById('one');
+    divOne.insertAdjacentHTML('afterEnd', '<div id="two">two</div>');
+
+    var divTwo = document.querySelector('#two');
+
+   	divTwo.onclick = addDiv;
+
+   	function addDiv() {
+   		divTwo.insertAdjacentHTML('beforeBegin', '<div id="two_first">two_first</div>');
+   		divTwo.setAttribute('id', 'two_second');
+   	}
+
+    </script>
+</body>
+</html>
