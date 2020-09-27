@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        body {
+            background: #000;
+        }
+        .wrapper {
+            height: 100px;
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .digit {
+            color: #fff;
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+    <div class="wrapper">
+        
+        <div class="digit">0</div>
+
+        <input type="button" value="Запуск" onclick="startCount()">
+        <input type="button" value="Пауза" onclick="pauseCount()">
+        <input type="button" value="Сброс" onclick="resetCount()">
+
+    </div>
+    <script>
+        var counter = 1;
+        var stopwatch;
+        var digit = document.querySelector('.digit');
+
+        function startCount() {
+            stopwatch = setInterval(function() {
+                digit.innerHTML = counter;
+                if (counter == 30) {
+                    pauseCount();
+                }
+                counter++;
+            }, 1000);
+        }
+
+        function pauseCount() {
+            clearInterval(stopwatch);
+        }
+
+        function resetCount() {
+            clearInterval(stopwatch);
+            digit.innerHTML = '0';
+            counter = 0;
+        }
+    </script>
+</body>
+
+</html>
