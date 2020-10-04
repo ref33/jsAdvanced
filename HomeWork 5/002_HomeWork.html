@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .block {
+            background-color: #000;
+            padding: 20px;
+            margin: 20px;
+            color: #fff;
+            max-width: 90%;
+        }
+        .hide-link {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            margin: 10px 0 10px 10px;
+            max-width: fit-content;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+
+    Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+    подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+    <div class="blocks">
+        <div class="block" style="background-color: green;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, iure.
+        <a href="#" class="hide-link">Hide</a>
+        </div>
+        <div class="block" style="background-color: orangered;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, iure.
+            <a href="#" class="hide-link">Hide</a>
+        </div>
+        <div class="block" style="background-color: orange;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, iure.
+            <a href="#" class="hide-link">Hide</a>
+        </div>
+        <div class="block" style="background-color: red;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, iure.
+            <a href="#" class="hide-link">Hide</a>
+        </div>
+        <div class="block" style="background-color: blue;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, iure.
+            <a href="#" class="hide-link">Hide</a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var blocks = document.querySelector('.blocks');
+
+            blocks.addEventListener('click', hideBlock);
+
+            function hideBlock(e) {
+
+                var target = e && e.target || window.event.srcElement;
+                console.log(target);
+                var className = target.classList.contains('hide-link');
+
+                if (target.tagName !== 'A') {
+                    return;
+                }
+
+                
+                var perent = target.parentElement;
+                perent.style.display = 'none';
+                e.preventDefault();
+                return false;
+            }
+
+        };
+    </script>
+</body>
+
+</html>

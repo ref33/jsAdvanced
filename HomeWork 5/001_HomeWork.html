@@ -1,0 +1,85 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .click-link,
+        .reset-link {
+            display: inline-block;
+            margin: 20px;
+            background: chocolate;
+            padding: 10px 15px;
+            max-width: fit-content;
+            color: #fff;
+            font-size: 19px;
+        }
+        
+        .reset-link {
+            outline: none;
+            border: none;
+            background-color: crimson;
+        }
+        
+        .reset-link:hover {
+            cursor: pointer;
+        }
+        
+        .tog-div {
+            background-color: #000;
+            color: #fff;
+            max-width: fit-content;
+            padding: 20px 10px;
+            margin: 20px;
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://google.com" class="click-link">Показать/убрать блок</a>
+    <button class="reset-link">Отменить обработчик</button>
+    <div class="tog-div">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, adipisci.</div>
+
+    <script>
+        window.onload = function() {
+            var div = document.querySelector('.tog-div');
+            var toggleLink = document.querySelector('.click-link');
+            var resetBtn = document.querySelector('.reset-link');
+
+            toggleLink.addEventListener('click', toggleDiv);
+            resetBtn.addEventListener('click', removeEvent);
+
+            function removeEvent() {
+                toggleLink.removeEventListener("click", toggleDiv);
+            };
+
+            function toggleDiv(e) {
+                div.classList.toggle('active');
+                e.preventDefault();
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>

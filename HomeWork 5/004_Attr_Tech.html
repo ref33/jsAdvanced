@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        window.onload = function() {
+            var mainDiv = document.getElementById("main-div");
+
+            mainDiv.addEventListener('mouseover', tips);
+
+            function tips(e) {
+                var target = e.target;
+                var dataToggleId = target.getAttribute('data-tooltip');
+                if (!dataToggleId) {
+                    return;
+                };
+                // alert(dataToggleId);
+
+                var newD = document.createElement('div');
+                newD.innerHTML = dataToggleId;
+                mainDiv.appendChild(newD);
+            }
+
+        };
+
+
+        function ins() {
+            console.log(cods);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main-div">
+        <span data-tooltip="наведите">наведите</span>
+        <span data-tooltip="для">для</span>
+        <span data-tooltip="подсказки">подсказки</span>
+    </div>
+</body>
+
+</html>
