@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork</title>
+    <style>
+        .circle {
+            display: block;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            background-color: #f11;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .stop {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+    при попадании div к краю окна, он переходит к началу окна. -->
+
+    <div id="circle" class="circle"></div>
+    <input class="stop" type="button" value="Stop">
+    <script>
+        var circle = document.querySelector('.circle');
+        var circleHeight = circle.getBoundingClientRect().height;
+        var stopBtn = document.querySelector('.stop');
+        var posLeft = 0;
+        var anim;
+
+        circle.addEventListener('click', animateCircle);
+        stopBtn.addEventListener('click', stopAnimate);
+
+        function animateCircle() {
+
+            var clinetX = window.innerWidth;
+            var currenLeft;
+
+            anim = setInterval(function() {
+                var posLeftInc = posLeft++;
+
+                currenLeft = circle.style.left = posLeftInc + 'px';
+
+                if (parseInt(currenLeft) === clinetX - circleHeight) {
+                    clearInterval(anim);
+                    circle.style.left = 0;
+                    posLeft = 0;
+                }
+
+            }, 0);
+        }
+
+        function stopAnimate() {
+            clearInterval(anim);
+        }
+    </script>
+</body>
+
+</html>

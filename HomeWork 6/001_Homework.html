@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork</title>
+    <style>
+        .block {
+            display: block;
+            height: 100px;
+            width: 100px;
+            background: green;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. back to top button; drag; -->
+
+    <div id="block" class="block"></div>
+    <script>
+        var block = document.querySelector('#block');
+
+        block.addEventListener("mousedown", dragBlock);
+
+        function dragBlock() {
+            document.addEventListener("mousemove", moveBlock);
+        }
+
+        function moveBlock(ev) {
+            var pX = ev.pageX;
+            var pY = ev.pageY;
+            block.style.left = pX + "px";
+            block.style.top = pY + "px";
+            document.addEventListener("mouseup", dropBlock);
+        }
+
+        function dropBlock() {
+            document.removeEventListener("mousemove", moveBlock);
+            document.removeEventListener("mouseup", dropBlock);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!-- Переделайте примерм 013 через работу атрибутов.
+ Попробуйте варианты с рефакторингом -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Пример проверки достоверности ввода</title>
+    <!-- <script type="text/javascript" src="Validate.js"></script> -->
+    <style type="text/css">
+        input.invalid {
+            background-color: Pink;
+        }
+        
+        input.valid {
+            background-color: LightGreen;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="form1">
+        Name:
+        <input type="text" name="userName" /><br /> email:
+        <input type="text" name="email" /><br /> zipcode:
+        <input type="text" name="zip" /><br />
+        <input type="submit" />
+    </form>
+
+    <script>
+        window.onload = function() {
+            var userName = document.querySelector('input[name="userName"]');
+            var email = document.querySelector('input[name="email"]');
+            var zip = document.querySelector('input[name="zip"]');
+            var form = document.querySelector('form');
+
+            var invalid = false;
+
+            userName.addEventListener('change', userNameCheck);
+            email.addEventListener('change', emailCheck);
+            zip.addEventListener('input', zipCheck);
+            form.addEventListener('submit', validate);
+
+
+
+            function userNameCheck() {
+                var userValue = userName.value;
+                var pattern = /\S/;
+                if (!pattern.test(userValue)) {
+                    userName.className = "invalid";
+                    return false;
+                } else {
+                    userName.className = "valid";
+                    return true;
+                }
+            }
+
+            function emailCheck() {
+                var emailValue = email.value;
+                var pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
+                console.log(emailValue);
+                if (!pattern.test(emailValue)) {
+                    email.className = "invalid";
+                    return false;
+                } else {
+                    email.className = "valid";
+                    return true;
+                }
+            }
+
+            function zipCheck() {
+                var zipValue = zip.value;
+                var pattern = /\d{5}/;
+                if (!pattern.test(zipValue)) {
+                    zip.className = "invalid";
+                    return false;
+                } else {
+                    zip.className = "valid";
+                    return true;
+                }
+            }
+
+            function validate(e) {
+                if (!userNameCheck() || !emailCheck() || !zipCheck()) {
+                    alert("Допущены ошибки при заполнении формы.");
+                    event.preventDefault();
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
