@@ -1,0 +1,79 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+     <script>
+         // Slide 1
+        function Person() {
+            this.walk = function() {
+                return 'walk';
+            }
+            this.eat = function() {
+                return 'eat';
+            }
+            this.drink = function() {
+                return 'drink';
+            }
+        }
+        function Doctor() {
+            this.cure = function() {
+                return 'cure';
+            }
+        }
+        function Soldier() {
+            this.shoot = function() {
+                return 'shoot';
+            }
+        }
+
+        Doctor.prototype = new Person();
+        Soldier.prototype = new Person();
+
+
+        //Slide 2
+        function Cure() {
+            this.cure = function() {
+                return 'cure';
+            }
+        }
+
+        function Doctor() {
+            this.cure = function() {
+                return 'Doctor cure';
+            }
+            this.walk = function () {
+                return 'walk';
+            }
+            this.eat = function () {
+                return 'eat';
+            }
+            this.drink = function () {
+                return 'drink';
+            }
+        } 
+
+        function Dentist() {
+            this.cure = function() {
+                return 'Dentist cure';
+            }
+        }  
+
+        function Surgeon() {
+            this.cure = function() {
+                return 'Surgeon cure';
+            }
+        }  
+
+        Doctor.prototype = new Cure();
+        Dentist.prototype = new Doctor();
+        Surgeon.prototype = new Surgeon();
+        
+    </script> 
+
+</body>
+</html>
