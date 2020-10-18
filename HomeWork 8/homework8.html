@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        a {
+            padding: 10px;
+            background: orange;
+        }
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body onload="loginFunc()">
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+
+    <p id="text"></p>
+    <script>
+        localStorage.setItem('storageUserName', 'admin');
+        document.cookie = "cookieUserName=Admin";
+
+        var text = document.getElementById('text');
+        var storageUserName = localStorage.getItem('storageUserName');
+        var cookieChek = getCookie('cookieUserName');
+
+        function getCookie(name) {
+            var cookieValue = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`);
+            return cookieValue ? cookieValue[1] : '';
+        }
+
+        function loginFunc() {
+            var login = prompt('Enter log name')
+            while ((storageUserName !== login) && (cookieChek !== login)) {
+                login = prompt('Enter log name');
+            }
+            text.innerHTML = `${login} вошел в систему`;
+            addExitBtn();
+        }
+
+        function addExitBtn() {
+            var exitBtn = document.createElement("a");
+            exitBtn.innerHTML = "Выход";
+
+            document.body.insertBefore(exitBtn, text.nextSibling);
+
+            exitBtn.onclick = function () {
+                document.location.reload();
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
