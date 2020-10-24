@@ -1,0 +1,135 @@
+body {
+	background: url(bg.jpg);
+	text-align: center;
+	background-color: #2a2a2a;
+	height: 100%;
+}
+
+h1 {
+	color: yellow;
+	font-size: 6em;
+	margin: 40px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.card {
+	font-size: 32px;
+	background: orange;
+	margin: 10px;
+	text-align: center;
+	padding: 20px;
+	flex-basis: 35%;
+	transition: all 0.2s;
+}
+
+.card:hover {
+	background-color: #ed8402;
+	cursor: pointer;
+}
+
+.character-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.character-modal-inner {
+	position: relative;
+	top: 20%;
+	left: 50%;
+	transform: translate( -50%);
+	padding: 10px 20px;
+	width: 25%;
+	height: auto;
+	animation-duration: 1s;
+	box-shadow: 0px 0px 23px 4px #ff2f2f;
+	background-color: #171717fc;
+	animation-name: modalanimate;
+}
+
+@keyframes modalanimate {
+	from {
+		left: -1500px;
+		opacity: 0
+	}
+	to {
+		left: 50%;
+		opacity: 1
+	}
+}
+
+.close-modal {
+	color: #fff;
+	float: right;
+	font-size: 25px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+	color: #9b9b9b;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.pagi-buttons {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -80%);
+
+}
+
+#next,
+#previous {
+	font-size: 70px;
+	height: 50%;
+	border: none;
+	background: none;
+	color: #fff;
+	outline: none;
+}
+
+#next:hover,
+#previous:hover {
+	color: grey;
+	cursor: pointer;
+}
+
+.table-card-heading {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.table .table-card-item,
+.table div {
+	padding: 1rem;
+	border: 1px solid #ffbb00;
+	text-align: inherit;
+	color: white;
+}
+
+.table-card-item ul {
+	text-align: left;
+	max-width: 240px;
+	margin: 10px auto;
+}
+
+.table-card-item ul li+li {
+	margin-top: 10px;
+}
